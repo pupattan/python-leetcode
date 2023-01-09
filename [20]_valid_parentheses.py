@@ -29,13 +29,11 @@ s consists of parentheses only '()[]{}'.
 """
 class Solution:
     def isValid(self, s: str) -> bool:
-        p_start = '([{'
-        p_dict = {')':'(', '}':'{', ']':'['}
-        stack = []
-        for c in s:
-            if c in p_start:
-                stack.append(c)
-            else:
-                if not (c in p_dict and stack and stack.pop() == p_dict[c]):
-                    return False
-        return len(stack) == 0
+        dict1 = {'(':')', '[':']', '{':'}'}
+        temp = []
+        for i in s:
+            if i in dict1:
+                temp.append(i)
+            elif len(temp) == 0 or dict1[temp.pop()] != i:
+                return False
+        return len(temp) == 0
