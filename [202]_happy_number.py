@@ -46,4 +46,18 @@ class Solution:
             return True
         else:
             return False
-            
+   
+# Best answer
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        seen = set()
+        while(n not in seen):
+            nxt = 0
+            seen.add(n)
+            while(n):
+                nxt += (n%10)**2
+                n//=10
+            if nxt == 1:
+                return True
+            n = nxt
+        return False
